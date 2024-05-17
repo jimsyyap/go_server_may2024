@@ -30,10 +30,10 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fileserver := http.FileServer(http.Dir("./static/"))
+	fileServer := http.FileServer(http.Dir("./static/"))
 	http.Handle("/", fileServer)
 	http.HandleFunc("/form", formHandler)
-	httpHandleFunc("/hello", helloHandler)
+	http.HandleFunc("/hello", helloHandler)
 
 	fmt.Printf("server at port 8080\n")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
